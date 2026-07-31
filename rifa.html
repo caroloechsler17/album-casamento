@@ -158,6 +158,13 @@ botao.className="numero reservado";
 
 botao.disabled=true;
 
+}else{
+
+    botao.onclick = () => {
+
+        alert("Você escolheu o número " + String(dados.numero).padStart(3,"0"));
+
+    };
 }
 
 
