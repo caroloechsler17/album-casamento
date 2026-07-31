@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,13 +75,16 @@ background:#48613c;
 
 </head>
 
+
 <body>
+
 
 <div class="card">
 
 <h1>Carlos ❤️ Caroline</h1>
 
 <h2>06 de setembro de 2026</h2>
+
 
 <p>
 
@@ -92,38 +96,59 @@ Cada foto registrada por você fará parte das nossas lembranças para sempre.
 
 </p>
 
+
 <a class="botao" href="#">
 
 📷 Enviar Fotos
 
 </a>
 
+
 </div>
+
 
 <script type="module">
 
+// Importa o Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-app.js";
 
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-firestore.js";
 
 
+// Configuração do Firebase
+
 const firebaseConfig = {
+
 apiKey: "AIzaSyB9wtBnxQd7E_GVjb-E5E38s_PcqiGoDm8",
+
 authDomain: "casamento-carlos-caroline.firebaseapp.com",
+
 projectId: "casamento-carlos-caroline",
+
 storageBucket: "casamento-carlos-caroline.firebasestorage.app",
+
 messagingSenderId: "565370188929",
+
 appId: "1:565370188929:web:bf5bb21e3a6067801bc980"
+
 };
 
 
+// Inicializa Firebase
+
 const app = initializeApp(firebaseConfig);
+
+
+// Conecta ao banco Firestore
 
 const db = getFirestore(app);
 
 
 console.log("Firebase conectado!");
 
-</script></body>
+</script>
+
+
+</body>
 
 </html>
