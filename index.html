@@ -100,6 +100,30 @@ Cada foto registrada por você fará parte das nossas lembranças para sempre.
 
 </div>
 
-</body>
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-app.js";
+
+import { getFirestore } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+apiKey: "AIzaSyB9wtBnxQd7E_GVjb-E5E38s_PcqiGoDm8",
+authDomain: "casamento-carlos-caroline.firebaseapp.com",
+projectId: "casamento-carlos-caroline",
+storageBucket: "casamento-carlos-caroline.firebasestorage.app",
+messagingSenderId: "565370188929",
+appId: "1:565370188929:web:bf5bb21e3a6067801bc980"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+console.log("Firebase conectado!");
+
+</script></body>
 
 </html>
