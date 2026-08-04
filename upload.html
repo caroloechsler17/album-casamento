@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Enviar Fotos - Casamento Carlos e Caroline</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px;
+    background: #f7f7f7;
+}
+
+h1 {
+    color: #444;
+}
+
+.container {
+    background: white;
+    max-width: 450px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+input {
+    margin: 20px;
+}
+
+button {
+    background: #6b8e23;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:disabled {
+    background: #999;
+}
+
+#status {
+    margin-top: 20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📸 Compartilhe suas fotos</h1>
+
+<p>
+Envie suas fotos do casamento para compartilhar com todos.
+</p>
+
+<input 
+type="file" 
+id="foto"
+accept="image/*"
+multiple
+>
+
+<br>
+
+<button onclick="enviarFotos()" id="botao">
+Enviar fotos
+</button>
+
+<div id="status"></div>
+
+</div>
+
+
+<script>
+
+const URL_SCRIPT = 
+"https://script.google.com/macros/s/AKfycbwl_8i_T-DFmk63_CckA8yiTjvxvE9d50DqEDy8tsshFScFeAf66UmHD-F1Td753U6aTQ/exec";
+
+
+async function enviarFotos(){
+
+const arquivos = document.getElementById("foto").files;
+
+if(arquivos.length === 0){
+alert("Selecione uma foto.");
+return;
+}
+
+document.getElementById("botao").disabled = true;
+
+for(let arquivo of arquivos){
+
+document.getElementById("status").innerHTML =
+"Enviando " + arquivo.name + "...";
+
+
+const leitor = new FileReader();
+
+
+await new Promise((resolve)=>{
+
+leitor.onload = async function(){
+
+const dados = {
+
+nomeArquivo: arquivo.name,
+tipo: arquivo.type,
+imagem: leitor.result
+
+};
+
+
+await fetch(URL_SCRIPT,{
+method:"POST",
+body: JSON.stringify(dados)
+});
+
+
+resolve();
+
+};
+
+
+leitor.readAsDataURL(arquivo);
+
+
+});
+
+
+}
+
+
+document.getElementById("status").innerHTML =
+"✅ Fotos enviadas com sucesso!";
+
+
+document.getElementById("botao").disabled = false;
+
+
+}
+
+</script>
+
+
+</body>
+
+</html>
